@@ -402,5 +402,8 @@
   ([query info]
    (process-query-and-save-execution! (add-default-constraints query) info))
 
+  ([query info context export-format]
+   (process-query-and-save-execution! ( query ) info context))
+
   ([query info context]
    (process-query-and-save-execution! (add-default-constraints query) info context)))

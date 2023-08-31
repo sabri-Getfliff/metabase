@@ -26,6 +26,11 @@
   []
   {:max-results           (setting/get :max-results)
    :max-results-bare-rows (setting/get :max-results-bare-rows)})
+(defn default-query-max-constraints
+      "Default map of constraints that we apply on dataset queries executed by the api."
+      []
+      {:max-results           4294967294
+       :max-results-bare-rows 4294967294})
 
 (defn- ensure-valid-constraints
   "`:max-results-bare-rows` must be less than or equal to `:max-results`, so if someone sets `:max-results` but not

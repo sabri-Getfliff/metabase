@@ -45,6 +45,7 @@
    [metabase.public-settings.premium-features :as premium-features]
    [metabase.query-processor.async :as qp.async]
    [metabase.query-processor.card :as qp.card]
+   [metabase.query-processor.middleware.constraints :as qp.constraints]
    [metabase.query-processor.pivot :as qp.pivot]
    [metabase.query-processor.util :as qp.util]
    [metabase.related :as related]
@@ -966,7 +967,7 @@ saved later when it is ready."
   (qp.card/run-query-for-card-async
    card-id export-format
    :parameters  (json/parse-string parameters keyword)
-   :constraints nil
+   :constraints qp.constraints/default-query-max-constraints
    :context     (api.dataset/export-format->context export-format)
    :middleware  {:process-viz-settings?  true
                  :skip-results-metadata? true
